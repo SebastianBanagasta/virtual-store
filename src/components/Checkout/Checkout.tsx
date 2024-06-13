@@ -8,7 +8,7 @@ export const Checkout = (props) => {
     const [quantity,setQuantity] = useState(1) // CANTIDAD QUE UNO DESEA EN EL INPUT DEL DETALLE DEL PRODUCTO
     const [button,setButton] = useState(false) // CAMBIAR EL ESTADO DEL BOTON DE ADD O DELETE
 
-    const units = useRef(1) 
+    const units = useRef(1)
 
     let productInStorage = []
     !localStorage.getItem('cart') 
@@ -46,10 +46,10 @@ export const Checkout = (props) => {
             setQuantity(one.units)
             setButton(true)
         }else{
+            console.log('entro')
             setQuantity(1)
             setButton(false)
         }
-
     },[product.id])
 
     return (
@@ -87,7 +87,7 @@ export const Checkout = (props) => {
                             <input 
                                 type="number" 
                                 min="1" 
-                                defaultValue={quantity}
+                                value={quantity}
                                 ref={units}
                                 onChange={()=>setQuantity(Number(units.current.value))} 
                             />
@@ -95,6 +95,7 @@ export const Checkout = (props) => {
                                 type="button" 
                                 className={button ? styles["remove-btn"] : styles["cart-btn"]}
                                 onClick={manageCart}
+                                disabled={button}
                             >
                                 {button ? "Remove from cart" : "Add to cart"}
                             </button>

@@ -1,6 +1,14 @@
+import { useEffect, useState } from 'react'
 import styles from './Thumbs.module.css'
 
 export const Thumbs = ({product}) => {
+    console.log(product)
+    const [thumb, setThumb] = useState(product.images[0] || "/mock1.jpg")
+
+    useEffect(()=>{
+        setThumb(product.images[0])
+    },[product.id])
+
     return (
         <>
             <section className={styles["product-images-block"]}>
@@ -12,6 +20,7 @@ export const Thumbs = ({product}) => {
                                 className={styles["mini-img"]}
                                 src={i}
                                 alt={product.title}
+                                onClick={()=>setThumb(i)}
                             />
                         ))
                     }
@@ -19,7 +28,7 @@ export const Thumbs = ({product}) => {
                 <img
                     className={styles["big-img"]}
                     id="big-img"
-                    src={product.images[0]}
+                    src={thumb}
                     alt="MacBook Pro 13'4"
                 />
             </section>
