@@ -5,12 +5,10 @@ import { useEffect, useRef, useState } from 'react'
 export const Checkout = (props) => {
     const {product} = props
 
-    const [quantity,setQuantity] = useState(1)
-    const [button,setButton] = useState(false)
+    const [quantity,setQuantity] = useState(1) // CANTIDAD QUE UNO DESEA EN EL INPUT DEL DETALLE DEL PRODUCTO
+    const [button,setButton] = useState(false) // CAMBIAR EL ESTADO DEL BOTON DE ADD O DELETE
 
-    const units = useRef(1)
-
-    //console.log(!localStorage.getItem('cart'))
+    const units = useRef(1) 
 
     let productInStorage = []
     !localStorage.getItem('cart') 
@@ -34,8 +32,25 @@ export const Checkout = (props) => {
     }
 
     useEffect(()=>{
-        // GESTION DE ESTADOS - menejar referencias y efectos - Actividad: Manejar el re-renderizado automático de Checkout
-    },[])
+        let productsOnCart = []
+        if(localStorage.getItem('cart')){
+            console.log('hay datos')
+            productsOnCart = JSON.parse(localStorage.getItem('cart'))
+        }else{
+            localStorage.setItem('cart',JSON.stringify([]))
+        }
+
+        const one = productsOnCart.find( items => items.id === product.id )
+
+        if(one){
+            setQuantity(one.units)
+            setButton(true)
+        }else{
+            setQuantity(1)
+            setButton(false)
+        }
+
+    },[product.id])
 
     return (
         <>
@@ -72,7 +87,7 @@ export const Checkout = (props) => {
                             <input 
                                 type="number" 
                                 min="1" 
-                                value={quantity}
+                                defaultValue={quantity}
                                 ref={units}
                                 onChange={()=>setQuantity(Number(units.current.value))} 
                             />

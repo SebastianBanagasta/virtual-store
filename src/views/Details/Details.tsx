@@ -9,7 +9,7 @@ import { Footer } from '../../components/Footer/Footer'
 import products from '../../assets/products.js'
 import { Thumbs } from '../../components/Thumbs/Thumbs.js'
 import { Description } from '../../components/Description/Description.js'
-import { Checkout } from '../../components/Checkout/Checkout.js'
+import { Checkout } from '../../components/Checkout/Checkout.jsx'
 
 
 export const Details = () => {
