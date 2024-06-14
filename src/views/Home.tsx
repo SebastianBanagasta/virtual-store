@@ -15,8 +15,8 @@ export const Home = () => {
         <>
             <NavBar />
             <Hero first={"tecnología"} second={"renovada"} />
-            <main>
-                <div className={styles["product-container"]} id="products">
+            <main className='w-full flex justify-center items-center p-[20px]'>
+                <div className="w-[1080px] flex flex-wrap justify-between" id="products">
                     {
                         products.map((p,k)=>(
                             <ProductCard 

@@ -53,7 +53,7 @@ export const NavBar = () => {
                     </ul>
                 </div>
                 <nav id="navbar">
-                    <NavButton titleNav={'Ofertas'} linkNav={'#'} />
+                    <NavButton titleNav={'Ofertas'} linkNav={'/onsale'} />
                     <NavButton titleNav={'Cómo comprar'} linkNav={'#'} />
                     <NavButton titleNav={'Costos y tarifas'} linkNav={'#'} />
                     <NavButton titleNav={'Mis pedidos'} linkNav={'#'} />
