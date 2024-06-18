@@ -1,5 +1,12 @@
+interface Props {
+  total: number
+}
 
-export const CartResume = ({total}) => {
+
+export const CartResume = (props: Props) => {
+
+  const { total } = props
+
   return (
     <>
         <div className="bg-[#f2f2f2] w-[340px] h-[220px] rounded-lg flex flex-col p-6">

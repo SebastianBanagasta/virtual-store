@@ -10,12 +10,13 @@ import products from '../../assets/products.js'
 import { Thumbs } from '../../components/Thumbs/Thumbs.js'
 import { Description } from '../../components/Description/Description.js'
 import { Checkout } from '../../components/Checkout/Checkout.js'
+import Product from '../../interfaces/Product.js'
 
 
 export const Details = () => {
     const { id } = useParams()
-    const product = products.find((e)=> e.id === id )
-    const productsOferta = products.filter((e)=>e.onsale===true)
+    const product:Product = products.find((e)=> e.id === id )
+    const productsOferta:Product[] = products.filter((e)=>e.onsale)
     if(product){
         return (
             <>
@@ -31,7 +32,7 @@ export const Details = () => {
                             <h2 className={styles["sales-title"]}>Ofertas de la semana</h2>
                             <div id="product-container" className={styles["product-container"]}>
                                 {
-                                    productsOferta.map((po,k)=>(
+                                    productsOferta.map((po:Product,k)=>(
                                         <Link key={k} className={styles["product-cart"]} to={`/details/`+po.id}>
                                             <img
                                                 className={styles["product-img"]}

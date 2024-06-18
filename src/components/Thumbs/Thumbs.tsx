@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import styles from './Thumbs.module.css'
+import ProductProp from '../../interfaces/ProductProp'
 
-export const Thumbs = ({product}) => {
-    console.log(product)
+export const Thumbs = (props:ProductProp) => {
+    const { product } = props
+    //console.log(product)
     const [thumb, setThumb] = useState(product.images[0] || "/mock1.jpg")
 
     useEffect(()=>{

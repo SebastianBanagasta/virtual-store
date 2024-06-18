@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom'
 import styles from './ProductCard.module.css'
+import Product from '../../interfaces/Product'
 
-export const ProductCard = (props) => {
-    const { id, title, color, price, image } = props
+export const ProductCard = (props:Product) => {
+    const { id, title, colors, price, images } = props
     return (
         <>
             <Link className={styles["product-card"]} to={`/details/`+id}>
                 <img
                     className={styles["product-img"]}
-                    src={image}
+                    src={images[0]}
                     alt={title}
                 />
                 <div className={styles["product-info"]}>
                     <span className={styles["product-title"]}>{title}</span>
-                    <span className={styles["product-description"]}>{color}</span>
+                    <span className={styles["product-description"]}>{colors}</span>
                     <div className={styles["product-price-block"]}>
                         <span className={styles["product-price"]}>{price}</span>
                         <span className={styles["product-discount"]}>50% Off</span>

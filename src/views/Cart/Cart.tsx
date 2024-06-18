@@ -4,14 +4,16 @@ import { CartResume } from '../../components/CartResume/CartResume'
 import { Footer } from '../../components/Footer/Footer'
 import { Hero } from '../../components/Hero/Hero'
 import { NavBar } from '../../components/NavBar/NavBar'
+import Product from '../../interfaces/Product'
 
 export const Cart = () => {
 
     const [productOnCart,setProductOnCart] = useState([])
 
+    const localStorageCart:string|null = localStorage.getItem('cart')
     useEffect(()=>{
-        if(localStorage.getItem('cart')){
-            const products = JSON.parse(localStorage.getItem('cart'))
+        if(localStorageCart){
+            const products = JSON.parse(localStorageCart)
             setProductOnCart(products)
         }
     },[])
@@ -23,7 +25,7 @@ export const Cart = () => {
             <main className=' w-full flex justify-center items-start gap-5 p-5 '>
                 <div className='flex flex-col gap-5'>
                     {
-                        productOnCart.map((e)=>(
+                        productOnCart.map((e:Product)=>(
                             <CartCard
                                 key={e.id}
                                 idProducts={e.id}
@@ -37,7 +39,7 @@ export const Cart = () => {
                         ))
                     }
                 </div>
-                <CartResume total="900" />
+                <CartResume total={9000} />
             </main>
             <Footer />
         </>
