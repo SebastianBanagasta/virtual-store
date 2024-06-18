@@ -1,13 +1,13 @@
 
-export const CartResume = () => {
+export const CartResume = ({total}) => {
   return (
     <>
-        <div className="bg-[#f2f2f2] w-[340px] h-[220px] rounded-lg flex flex-col p-6 ">
+        <div className="bg-[#f2f2f2] w-[340px] h-[220px] rounded-lg flex flex-col p-6">
             <div className="flex flex-col items-center justify-between h-full w-full">
                 <h2 className=" flex justify-center gap-3 font-bold text-xl"><span>Resumen</span><span>del</span><span>pedido</span></h2>
                 <div className="w-full flex justify-between">
                     <h3>Total</h3>
-                    <strong className="">$800000</strong>
+                    <strong className="">${total}</strong>
                 </div>
                 <small className="w-full text-left mb-4 ">Incluye impuesto PAIS y percepción AFIP.</small>
             </div>
