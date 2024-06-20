@@ -1,17 +1,26 @@
 
+import axios from 'axios'
+
 import { Footer } from '../components/Footer/Footer'
 import { Hero } from '../components/Hero/Hero'
 import { NavBar } from '../components/NavBar/NavBar'
 import { ProductCard } from '../components/ProductCard/ProductCard'
 //import styles from './Home.module.css'
 
-import products from '../assets/products.js'
+//import products from '../assets/products.js'
 import Product from '../interfaces/Product.js'
+import { useEffect, useState } from 'react'
 
 export const Home = () => {
 
-
+    const [products,setProducts] = useState<Product[]>([])
     
+    useEffect(()=>{
+        axios.get("/products.json")
+            .then((res)=>setProducts(res.data))
+            .catch((err)=>console.log(err))
+    },[])
+
     return (
         <>
             <NavBar />
